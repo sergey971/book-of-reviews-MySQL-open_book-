@@ -1,4 +1,13 @@
-<?php
+<?php 
 
-$db = @mysqli_connect('localhost', 'root', '', 'gb') or die('Ошибка соединения с БД');
-mysqli_set_charset($db, "utf8") or die('Не установлена кодировка');
+$server = '127.0.0.1:3307 ';
+$user = 'root';
+$password = 'root';
+$db_name = 'test';
+
+$link = mysqli_connect($server, $user, $password, $db_name) or die(mysqli_error($link));
+mysqli_query($link, "SET NAMES 'utf8");
+
+
+
+?>
