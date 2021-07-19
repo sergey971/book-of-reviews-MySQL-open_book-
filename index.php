@@ -20,13 +20,13 @@ require_once "connect.php";
 
 				<?php
 
-	if (!empty($_POST)) { 
+	if (!empty($_GET)) { 
 
-		if (!empty($_POST['name'] AND ['commet'])) echo '<p class="info alert alert-info"">Запись успешно сохранена</p>';
+		if (!empty($_GET['name'] AND ['commet'])) echo '<p class="info alert alert-info"">Запись успешно сохранена</p>';
 
-		if (empty($_POST['name'])) echo '<p style="color: red; font-weight: bold;">Введите имя</p>';
+		if (empty($_GET['name'])) echo '<p style="color: red; font-weight: bold;">Введите имя</p>';
 
-		if (empty($_POST['commet'])) echo '<p style="color: red; font-weight: bold;">Введите текс сообщения </p>';
+		if (empty($_GET['commet'])) echo '<p style="color: red; font-weight: bold;">Введите текс сообщения </p>';
 
 	 else {
 
