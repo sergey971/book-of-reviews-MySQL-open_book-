@@ -30,9 +30,9 @@ require_once "connect.php";
 
 	 else {
 
-		$name = $_POST['name'];
+		$name = $_GEt['name'];
 		$date = date('Y.m.d H:i:s');
-		$commet = $_POST['commet'];
+		$commet = $_GET['commet'];
 		
 		$query = "INSERT INTO workers SET name='$name', date='$date', commet='$commet'";
 		mysqli_query($link, $query) or die(mysqli_error($link));
@@ -68,6 +68,26 @@ require_once "connect.php";
 						$result .= '</tr>';
 			}
 				echo $result;
+		?>
+		<?php
+		$query = "SELECT COUNT(*) as count FROM `workers`";
+				$result = mysqli_query($link, $query) or die(mysqli_error($link));
+				$count = mysqli_fetch_assoc($result)['count'];
+				$pagesCount = ceil($count / $notesOnPage);
+				if ($page != 1){
+					$prev = $page - 1;
+					echo "<a href=\"?page=$prev\"><<</a> ";
+				}
+				
+				for ($i = 1; $i <= $pagesCount; $i++){
+					if ($page == $i){
+						$class = ' class="active"';
+					}else {
+						$class = '';
+				}
+				echo "<a href=\"?page=$i\"$class>$i</a> ";
+			}
+			
 		?>
 				</div>
 	</body>
